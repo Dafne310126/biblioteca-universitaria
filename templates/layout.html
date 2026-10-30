@@ -7,42 +7,49 @@
 
     <title>{{ titulo }} - Biblioteca Universitaria</title>
 
+    <!-- Bootstrap 5 -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
+    <!-- Tipografía profesional de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 
-<body>
+<body class="site-body">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container custom-nav-container">
 
-            <a class="navbar-brand" href="{{ url_for('index') }}">
+            <a class="navbar-brand brand-logo" href="{{ url_for('index') }}">
                 Biblioteca Universitaria
             </a>
 
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 nav-list">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('index') }}">
+                    <a class="nav-link custom-nav-link" href="{{ url_for('index') }}">
                         Inicio
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('catalogo') }}">
+                    <a class="nav-link custom-nav-link" href="{{ url_for('catalogo') }}">
                         Catálogo
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('servicios') }}">
+                    <a class="nav-link custom-nav-link" href="{{ url_for('servicios') }}">
                         Servicios
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('contacto') }}">
+                    <a class="nav-link custom-nav-link" href="{{ url_for('contacto') }}">
                         Contacto
                     </a>
                 </li>
@@ -51,18 +58,21 @@
         </div>
     </nav>
 
-    <div class="container-fluid mt-4 p-4">
+    <main class="container main-wrapper">
 
-        <h1>{{ titulo }}</h1>
+        <header class="page-header">
+            <h1 class="main-title">{{ titulo }}</h1>
+            <p class="subtitle">{{ mensaje }}</p>
+        </header>
 
-        <p>{{ mensaje }}</p>
+        <hr class="custom-divider">
 
-        <hr>
+        <div class="content-body">
+            {% block content %}
+            {% endblock %}
+        </div>
 
-        {% block content %}
-        {% endblock %}
-
-    </div>
+    </main>
 
 </body>
 </html>
